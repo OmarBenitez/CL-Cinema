@@ -1,0 +1,8 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> morphia 1.2.12
+    - play -> secure
+    - play -> crud
+    - play -> paginate 0.12

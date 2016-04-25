@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" class="no-js" ng-app>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="/public/images/favicon.png" type="image/png"/>
+        <link rel="stylesheet" href="/public/stylesheets/newPost/reset.css"> <!-- CSS reset -->
+        <link rel="stylesheet" href="/public/stylesheets/newPost/style.css"> <!-- Resource style -->
+        <script src="/public/javascripts/newPost/modernizr.js"></script> <!-- Modernizr -->
+
+        <title>Nuevo Post| CL Cinema</title>
+    </head>
+    <body>
+        <form class="cd-form floating-labels" enctype="multipart/form-data" action="@{Application.savePost()}" method="POST">
+            <fieldset>
+                <legend>Nuevo Post</legend>
+
+                <div class="icon">
+                    <label class="cd-label" for="cd-name">Titulo</label>
+                    <input class="message" type="text" name="object.title" id="cd-name" required>
+                </div> 
+
+
+                <div class="icon">
+                    <label class="cd-label" for="cd-textarea">Project description</label>
+                    <textarea class="message" name="object.content" id="cd-textarea" required></textarea>
+                </div>
+
+
+            </fieldset>
+            <fieldset>
+                <legend>Banner</legend>
+                <div class="icon">
+                    <input name="object.banner.file" type="file" accept="image/*"/>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Imagenes
+                <a href="" class="plus-button" ng-click="photos.push({})">+</a>
+                </legend>
+                <div ng-init="photos = []">
+                </div>
+                <div class="icon" ng-repeat="p in photos">
+                    <input name="object.photos[{{$index}}].file" id="filesToUpload" type="file" accept="image/*"/>
+                </div>
+            </fieldset>
+            <div>
+                <input type="submit" value="Guardar">
+            </div>
+        </form>
+        <script src="/public/javascripts/newPost/jquery-2.1.1.js"></script>
+        <script src="/public/javascripts/newPost/main.js"></script> <!-- Resource jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700italic,700' rel='stylesheet' type='text/css'>
+        <link rel="shortcut icon" href="/public/images/favicon.png" type="image/png"/>
+        <link rel="stylesheet" href="/public/stylesheets/index/reset.css"> <!-- CSS reset -->
+        <link rel="stylesheet" href="/public/stylesheets/index/style.css"> <!-- Resource style -->
+        <script src="/public/javascripts/index/modernizr.js"></script> <!-- Modernizr -->
+
+        <link href='https://fonts.googleapis.com/css?family=Amatic+SC' rel='stylesheet' type='text/css'>
+        
+        <title>Home | CL Cinema</title>
+    </head>
+    <body>
+        <header>
+<!--            <a href="#0" class="cd-logo"><img src="/public/images/cd-logo.svg"></a>-->
+
+            <button class="cd-nav-trigger">Menu<span aria-hidden="true" class="cd-icon"></span></button>
+        </header>
+
+        <nav class="cd-primary-nav">
+            <ul>
+                <li class="cd-label">Navigation</li>
+                <li><a href="#0">The team</a></li>
+                <li><a href="#0">Our services</a></li>
+                <li><a href="#0">Our projects</a></li>
+                <li><a href="#0">Contact us</a></li>
+            </ul>
+        </nav> <!-- .cd-primary-nav -->
+
+        <div class="cd-projects-container">
+            <ul>
+                #{list items: objects, as: 'post'}
+                <li class="single-project">
+                    <div class="cd-title" data-url="@{attach(post?.id)}">
+                        <h2>${post?.title}</h2>
+                    </div> <!-- .cd-title -->
+
+                    <div class="cd-project-info">
+                        <button class="cd-scroll">Scroll down</button>
+
+                        <div class="content-wrapper">
+                            ${post?.content?.raw()}
+                            #{list items: post?.photos, as: 'photo'}
+                                <img src="@{getPhoto(photo?.id)}" align="middle">
+                            #{/list}
+                        </div>
+                        
+                    </div> <!-- .cd-project-info -->
+                </li>
+                #{/list}
+            </ul>
+        </div> 
+        <script src="/public/javascripts/index/jquery-2.1.4.js"></script>
+        <script src="/public/javascripts/index/main.js"></script> <!-- Resource jQuery -->
+    </body>
+</html>
