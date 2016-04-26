@@ -19,6 +19,7 @@ jQuery(document).ready(function(event) {
     });
 
     projectsContainer.on('click', '.single-project', function() {
+        console.log(this)
         var selectedProject = $(this);
         if (projectsContainer.hasClass('nav-open')) {
             //close navigation

@@ -16,6 +16,10 @@ public class Application extends Controller {
         objects.setPageSize(3);
         render(objects);
     }
+    
+    public static void contacto() {
+        render();
+    }
 
     public static void newPost() {
         render();

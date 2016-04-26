@@ -23,17 +23,16 @@
 
         <nav class="cd-primary-nav">
             <ul>
-                <li class="cd-label">Navigation</li>
-                <li><a href="#0">The team</a></li>
-                <li><a href="#0">Our services</a></li>
-                <li><a href="#0">Our projects</a></li>
-                <li><a href="#0">Contact us</a></li>
+                <li class="cd-label">Navegación</li>
+                <li><a href="/">Portafolio</a></li>
+                <li><a href="#0">Quién Soy</a></li>
+                <li><a href="@{Application.contacto()}">Contacto</a></li>
             </ul>
         </nav> <!-- .cd-primary-nav -->
 
         <div class="cd-projects-container">
             <ul>
-                #{list items: objects, as: 'post'}
+                #{paginate.list items: objects, as:'post'}
                 <li class="single-project">
                     <div class="cd-title" data-url="@{attach(post?.id)}">
                         <h2>${post?.title}</h2>
@@ -43,7 +42,9 @@
                         <button class="cd-scroll">Scroll down</button>
 
                         <div class="content-wrapper">
-                            ${post?.content?.raw()}
+                            <p>
+                                ${post?.content?.raw()}
+                            </p>
                             #{list items: post?.photos, as: 'photo'}
                                 <img src="@{getPhoto(photo?.id)}" align="middle">
                             #{/list}
@@ -51,8 +52,22 @@
                         
                     </div> <!-- .cd-project-info -->
                 </li>
-                #{/list}
+                #{/paginate.list}
             </ul>
+            <div class="pagination">
+                <ul>
+                    #{if objects?.getHasPreviousPage()}
+                        <li class="prev">
+                            <a href="/?page=${objects.getPageNumber() - 1}"></a>
+                        </li>
+                    #{/if}
+                    #{if objects?.getHasNextPage()}
+                        <li class="next">
+                            <a href="/?page=${objects.getPageNumber() + 1}"></a>
+                        </li>
+                    #{/if}
+                </ul>
+            </div>
         </div> 
         <script src="/public/javascripts/index/jquery-2.1.4.js"></script>
         <script src="/public/javascripts/index/main.js"></script> <!-- Resource jQuery -->

@@ -735,3 +735,25 @@ button {
 .no-js .cd-project-info .content-wrapper {
     margin-top: 0;
 }
+
+.prev a, .next a {
+    cursor: pointer;
+    position: fixed;
+    z-index: 2;
+    top: calc(50% - 20px);
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-image: url('/public/images/cd-icon-arrow-prev.svg'); 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.next a {
+    right: 0;
+    transform: rotate(180deg);
+}
+
+.nav-open .prev, .project-open .prev, .nav-open .next, .project-open .next {
+    display: none;
+}
