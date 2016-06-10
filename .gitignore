@@ -2,7 +2,7 @@
 *.DS_Store
 *.pyc
 
-tmp/
+/tmp/*
 /lib/
 /logs
 /precompile

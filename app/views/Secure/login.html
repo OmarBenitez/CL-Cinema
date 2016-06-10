@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>Login</title>		
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" href="/public/stylesheets/newPost/reset.css"> <!-- CSS reset -->
+        <link rel="stylesheet" type="text/css" media="screen" href="/public/stylesheets/secure/login.css" />
+    </head>
+    <body cz-shortcut-listen="true">
+
+        <div id="login">
+
+            <form class="cd-form floating-labels" enctype="multipart/form-data" action="@{Application.savePost()}" method="POST">
+            <fieldset>
+                <legend>NuevoPost</legend>
+
+                <div class="icon">
+                    <label class="cd-label" for="cd-name">Titulo</label>
+                    <input class="message" type="text" name="object.title" id="cd-name" required>
+                </div> 
+
+
+                <div class="icon">
+                    <label class="cd-label" for="cd-textarea">Project description</label>
+                    <textarea class="message" name="object.content" id="cd-textarea" required></textarea>
+                </div>
+
+
+            </fieldset>
+            <div>
+                <input type="submit" value="Guardar">
+            </div>
+        </form>
+
+            <form action="/secure/authenticate" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="authenticityToken" value="bcebddca7ce240187904cf900e0b2ff950a5ef37">
+                    <p id="username-field">
+                        <label for="username">Username:</label>
+                        <input type="text" name="username" id="username" value="">
+                    </p>
+                    <p id="password-field">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" value="">
+                    </p>
+                    <p id="remember-field">
+                        <input type="checkbox" name="remember" id="remember" value="true">
+                            <label for="remember">Remember me</label>
+                    </p>
+                    <p id="signin-field">
+                        <input type="submit" id="signin" value="Sign in">
+                    </p>
+
+            </form>
+        </div> 
+
+    </body>
+</html>
